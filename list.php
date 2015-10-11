@@ -31,14 +31,16 @@ require_once 'connection.php';
 		        </tr>  
         </thead>  
   
-        <?php   
+        <?php  
+        $i = 0; 
         $result="SELECT * FROM wordtable";//select query for viewing users.  
         $result=$connection->query($result);//here run the sql query.  
         if($result->num_rows > 0) {
         while($row=$result->fetch_assoc())//while look to fetch the result and store in a array $row.  
         {  
+        	$i++;
             echo "<tr>
-				<td><strong>". $row["serial_no"]. ".</strong></td>
+				<td><strong>". $i. ".</strong></td>
 				<td><strong>". $row["word"]. "</strong></td>
 				<td> ". $row["synonyms"]. "</td> 
 				<td> " . $row["sentence"] . "</td>
