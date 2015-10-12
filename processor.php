@@ -4,7 +4,7 @@ require_once 'connection.php';
 $word = test_input($_POST['word']);
 $synonyms = test_input($_POST['synonyms']);
 $sentence = test_input($_POST['sentence']);
-$serial_no = test_input($_POST['serial_no']);
+
 
 function test_input($data) {
 	$data = trim($data);
@@ -13,10 +13,12 @@ function test_input($data) {
 	return $data;
 }
 
-$result = "INSERT INTO wordtable(serial_no,word,synonyms,sentence) VALUES('$serial_no','$word','$synonyms','$sentence')";
-$result = $connection->query($result);
+$statement = $db->prepare("INSERT INTO wordtable
+		 (word,synonyms,sentence) values (?,?,?)");
+		
+$statement->execute(array($word,$synonyms,$sentence));
 
-if(!$result) {
+if(!$statement) {
 	echo "Connection error". $connection->error;
 }
 else {
@@ -25,6 +27,8 @@ else {
 	<?php
 }
 ?>
+
+
 
 
 <!DOCTYPE html>
