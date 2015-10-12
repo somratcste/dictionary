@@ -1,13 +1,15 @@
-<?php
-$host = 'localhost';
-$user = 'root';
-$password = "";
+<?php 
+$dbhost = 'localhost';
 $dbname = 'worddb';
+$dbuser = 'root';
+$dbpass = '';
 
-$connection =  mysqli_connect($host, $user, $password , $dbname);
-
-if(!$connection){
-	die("connection error " . mysqli_connect_error());
+try {
+	$db = new PDO("mysql:host={$dbhost};dbname={$dbname}",$dbuser,$dbpass);
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 
+catch(PDOException $e) {
+	echo "Connection error: ".$e->getMessage();
+}
 ?>
