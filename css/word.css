@@ -16,3 +16,18 @@
 	width: 400px;
 	padding-top: 20px;
 }
+input[type="submit"] {
+	margin-bottom: 2px;
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+
+.success {
+	margin-top: 40px;
+	color: green;
+	font-weight: bold;
+	font-size: 20px;
+}
